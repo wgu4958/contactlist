@@ -1,0 +1,24 @@
+{
+	"id": 4,
+     "firstName": "Amy",
+     "lastName": "Taylor",
+     "email": "amy.taylor@gmail.com",
+     "address":
+     {
+         "streetAddress": "3007 W Radoio Dr",
+         "city": "Florence",
+         "state": "SC",
+         "postalCode": "29501"
+     },
+     "phoneNumber":
+     [
+         {
+           "type": "home",
+           "number": "843 555-1234"
+         },
+         {
+           "type": "mobile",
+           "number": "843 555-4567"
+         }
+     ]
+ }

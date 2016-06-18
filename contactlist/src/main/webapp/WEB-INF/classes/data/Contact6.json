@@ -1,0 +1,24 @@
+{
+	"id": 6,
+     "firstName": "Wenfang",
+     "lastName": "Mei",
+     "email": "wenfang.mei@gmail.com",
+     "address":
+     {
+         "streetAddress": "36 Hastings Rd",
+         "city": "Belle Mead",
+         "state": "NJ",
+         "postalCode": "08502"
+     },
+     "phoneNumber":
+     [
+         {
+           "type": "home",
+           "number": "908 555-1234"
+         },
+         {
+           "type": "mobile",
+           "number": "908 555-4567"
+         }
+     ]
+ }
