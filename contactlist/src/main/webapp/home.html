@@ -1,50 +1,26 @@
-<!DOCTYPE html>
-<html ng-app="myApp">
-<head lang="en">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="webjars/bootstrap/3.2.0/css/bootstrap.css">
-    <link rel="stylesheet" href="webjars/bootstrap-material-design/0.2.1/css/material.css">
-    <title></title>
+<!doctype html>
+<html lang="en" ng-app="contactApp">
+<head>
+  <meta charset="utf-8">
+  <title>Contact List</title>
+  
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+<!--   <script src="bower_components/jquery/dist/jquery.js"></script> -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-mask/mask.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
 </head>
-<body ng-controller="UsersController">
- 
-<div class="row">
-    <br>
-    <div class="container">
-        <div id="userList" class="col-sm-offset-1 col-sm-10">
-            <div class="input-group">
-                <input class="form-control" id="search" name="search" placeholder="Search for" ng-model="query"
-                       required="required"/>
-              <span class="input-group-btn">
-                  <button type="submit" class="btn btn-default">
-                      <i class="glyphicon glyphicon-search"></i>
-                  </button>
-              </span>
-            </div>
-            <div class="list-group">
-                <div class="list-group-item">
-                    <div ng-repeat="user in users | filter:query" class="list-group-item" style="margin-top:16px">
-                        <div class="row-picture">
-                            <img class="circle"
-                                 src="http://i.forbesimg.com/media/lists/people/{{user.firstName | lowercase}}-{{user.familyName | lowercase}}_50x50.jpg"
-                                 alt="icon">
-                        </div>
-                        <div class="row-content">
-                            <h4 class="list-group-item-heading">{{user.firstName}} {{user.familyName}}</h4>
- 
-                            <p class="list-group-item-text"><i class="glyphicon glyphicon-envelope"></i> {{user.email}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.js"></script>
-<script type="text/javascript" src="webjars/angularjs/1.3.8/angular.min.js"></script>
-<script type="text/javascript" src="webjars/angularjs/1.3.8/angular-resource.min.js"></script>
-<script type="text/javascript" src="webjars/bootstrap-material-design/0.2.1/js/material.js"></script>
-<script type="text/javascript" src="resources/js/app.js"></script>
+<body >
+
+  <div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
+
 </body>
 </html>

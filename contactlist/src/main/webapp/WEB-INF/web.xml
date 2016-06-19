@@ -5,7 +5,7 @@
 		
     <display-name>CxfRestService</display-name>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>home.html</welcome-file>
     </welcome-file-list>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

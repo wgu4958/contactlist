@@ -1,27 +1,28 @@
 package com.wenfang.contactlist.model;
 
 public class Contact {
-	private int contactId;
+	private Integer contactId;
 	private String firstName;
 	private String lastName;
 	private String email;
-	private PhoneNumber phone;
-	private Address address;
+	private String phone;
 
 	public Contact() {
 	}
 
-	public Contact(int contactId, String firstName, String lastName) {
+	public Contact(Integer contactId, String firstName, String lastName, String email, String phone) {
 		this.contactId = contactId;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
 	}
 
-	public int getContactId() {
+	public Integer getContactId() {
 		return contactId;
 	}
 
-	public void setContactId(int contactId) {
+	public void setContactId(Integer contactId) {
 		this.contactId = contactId;
 	}
 
@@ -49,19 +50,11 @@ public class Contact {
 		this.email = email;
 	}
 
-	public PhoneNumber getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(PhoneNumber phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
-	} 
-	
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 }
