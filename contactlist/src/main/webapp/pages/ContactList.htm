@@ -1,5 +1,6 @@
 <div class="row">
-	<span style="color:green" ng-show="info">info</span>
+	<br>
+	<span style="color:green" ng-show="info">**{{info}}</span>
     <br>
     <div class="container">
         <div id="contactList" class="col-sm-offset-1 col-sm-10">
@@ -25,14 +26,12 @@
 					      <tr ng-repeat="contact in contacts | filter:query"  style="margin-top:16px">
 					        <td class="list-group-item-heading">{{contact.firstName}} {{contact.lastName}}</td>
 					        <td class="list-group-item-text"><i class="glyphicon glyphicon-envelope"></i> {{contact.email}}</td>
-					        <td class="list-group-item-text"><i class="glyphicon glyphicon-phone-alt"></i> {{contact.phone}}</td>
+					        <td class="list-group-item-text"><i class="glyphicon glyphicon-phone-alt"></i> {{contact.phone | phonenumber}}</td>
 					      </tr>
 					    </tbody>
 					</table>
                 </div>
             </div>
-            
-            <a ng-click="createNewContact()" class="btn btn-small">Create New Contact</a>
         </div>
     </div>
 </div>

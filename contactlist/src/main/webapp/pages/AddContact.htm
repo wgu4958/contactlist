@@ -1,10 +1,11 @@
 <div class="container">
-  <h1>Create a new contact</h1>
+	<div  class="col-sm-offset-1 col-sm-8">
+  <h1>Add a New Contact</h1>
   
-  <span style="color:red" ng-show="error">**{{error.errorMsg}}**</span>
+  <span style="color:red" ng-show="error">**{{error}}**</span>
 
   <form class="form-horizontal" name="newContactForm" novalidate >
-    <div class="control-group">
+    <div class="control-group" >
       <label class="control-label" for="inputFirstName">First Name:</label>
 
       <div class="controls">
@@ -46,8 +47,9 @@
       <div class="controls" style="margin-top:16px">
         <a ng-click="createNewContact()" class="btn btn-small btn-primary" 
         	ng-disabled="newContactForm.inputFirstName.$invalid || newContactForm.inputLastName.$invalid ||
-					newContactForm.inputEmail.$invalid || newContactForm.inputPhone.$invalid">Create New Contact</a>
+					newContactForm.inputEmail.$invalid || newContactForm.inputPhone.$invalid">Save</a>
       </div>
     </div>
   </form>
+  </div>
 </div>

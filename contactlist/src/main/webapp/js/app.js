@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('contactApp', ['ngRoute', 'contactControllers', 'contactServices','ui.mask']);
+var myApp = angular.module('contactApp', ['ngRoute', 'contactControllers', 'contactServices','contactFilters', 'ui.mask']);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.

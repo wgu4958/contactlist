@@ -1,11 +1,15 @@
 package com.wenfang.contactlist.model;
 
+import java.util.List;
+
 public class Contact {
 	private Integer contactId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String phone;
+	private Address address;
+	private List<PhoneNumber> phoneNumbers;
 
 	public Contact() {
 	}
