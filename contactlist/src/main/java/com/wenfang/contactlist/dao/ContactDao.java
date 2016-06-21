@@ -21,15 +21,14 @@ public class ContactDao {
 		//initial contact list
 		Contact contact = new Contact(1, "Jonh", "Smith", "john.smith@yahoo.com", "9085551234");
 		contactMap.put(contact.getContactId(), contact);
-		
 		ContactDetails details = new ContactDetails(1, "Jonh", "Smith", "john.smith@yahoo.com", "9085551234");
 		details.setAddress(new Address(1, "20 Main St", "Bridgewater", "NJ", "08875"));
 		contactDetailsMap.put(contact.getContactId(), details);
 		
 		contact = new Contact(2, "Susan", "Jones", "susan.jones@yahoo.com", "9086454656");
 		contactMap.put(contact.getContactId(), contact);
-		
 		details = new ContactDetails(2, "Susan", "Jones", "susan.jones@yahoo.com", "9086454656");
+		details.setAddress(new Address(2, "30 Hastings Rd", "Hillsborogh", "NJ", "08575"));
 		contactDetailsMap.put(contact.getContactId(), details);
 		
 		contact = new Contact(3, "Bob", "Tylor", "bob.tylor@yahoo.com", "6091777152");
