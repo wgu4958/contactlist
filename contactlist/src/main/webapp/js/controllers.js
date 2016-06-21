@@ -4,8 +4,9 @@ var contactControllers = angular.module('contactControllers', []);
 
 contactControllers.controller('ContactListController', [ '$scope', '$rootScope', 'ContactFactory', '$location',
 	function($scope, $rootScope, ContactFactory, $location) {	
+		
 		getContacts();
-	
+		
 		function getContacts() {
 			ContactFactory.getContacts()
 		        .then(function (response) {
@@ -16,6 +17,8 @@ contactControllers.controller('ContactListController', [ '$scope', '$rootScope',
 		}
 		
 		$scope.getContactDetails = function(contactId) {
+			$rootScope.info = null;
+			
 			ContactFactory.getContactDetails(contactId)
 	        .then(function (response) {
 	        	$rootScope.contact = response.data;
@@ -28,7 +31,7 @@ contactControllers.controller('ContactListController', [ '$scope', '$rootScope',
 
 contactControllers.controller('AddContactController', ['$scope','$rootScope','ContactFactory','$location',                                                      
 	function($scope, $rootScope, ContactFactory, $location) {
-		
+		$rootScope.info = null;
 		$scope.createNewContact = function(contact) {
 			ContactFactory.addContact(contact)
 			.then(function(response) {

@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row container col-sm-offset-1 col-sm-10" >
 	<h1>Contact List</h1>
 	<br>
-	<span style="color:green" ng-show="info">**{{info}}</span>
-    <div class="container col-sm-offset-1 col-sm-10" >
+	<span style="color:green;text-align:center" ng-show="info">**{{info}}</span>
+    
 		<div class="input-group">
           <input class="form-control" id="search" name="search" placeholder="Search for" ng-model="query" required="required"/>
           <span class="input-group-btn">
@@ -27,5 +27,4 @@
 		      </tr>
 		    </tbody>
 		</table>
-     </div>
 </div>
