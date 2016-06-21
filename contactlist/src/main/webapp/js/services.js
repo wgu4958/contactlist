@@ -1,8 +1,7 @@
 'use strict'
 
-angular.module('contactServices',[])
-	.factory('ContactFactory', ['$http', function($http) {
-		
+angular.module('contactServices',[]).factory('ContactFactory', ['$http', function($http) {
+	
 	var urlBase = '/contactlist/rest/contactservices/contacts';
 	var dataFactory = {};
 	
@@ -15,7 +14,6 @@ angular.module('contactServices',[])
 	};
 
 	dataFactory.addContact = function (contact) {
-		
 	    return $http({
 	        url: urlBase,
 	        dataType: 'json',
@@ -24,8 +22,7 @@ angular.module('contactServices',[])
 	        headers: {
 	            "Content-Type": "application/json"
 	        }
-	    })
-	    
+	    })  
 	};
 	return dataFactory;
 }]);

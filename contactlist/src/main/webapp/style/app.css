@@ -1,3 +1,4 @@
+/*  Create the red star for required field */
 .form-group.required .control-label:before {
 	color: red;
 	content: "*";

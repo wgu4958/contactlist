@@ -1,7 +1,6 @@
-<div class="container">
-	<div  class="col-sm-offset-1 col-sm-8">
-  <h1>Add a New Contact</h1>
-  
+<div class="container col-sm-offset-2 col-sm-8">
+  <h2>Add a New Contact</h2>
+  <br>
   <span style="color:red" ng-show="error">**{{error}}**</span>
 
   <form class="form-horizontal" name="newContactForm" novalidate >
@@ -52,25 +51,25 @@
   	
   	<h3>Address <i class="glyphicon glyphicon-home"></i></h3>
   	<div class="row control-group">
-	  <div class="col-sm-3" style="text-align:right"><label class="control-label" for="inputStreet" >Street Line:</label></div>
+	  <div class="col-sm-3 form-group" style="text-align:right"><label class="control-label" for="inputStreet" >Street Line:</label></div>
 	  	<div class="controls">
-	  		<div class="col-sm-3">
+	  		<div class="col-sm-9">
 	        	<input type="text" name="inputStreet" ng-model="newContact.address.street" placeholder="Street Line" />
 	        </div>
       	</div>
 	</div>
 	<div class="row control-group">
-		<div class="col-sm-3" style="text-align:right"><label class="control-label" for="inputCity">City:</label></div>
+		<div class="col-sm-3 form-group" style="text-align:right"><label class="control-label" for="inputCity">City:</label></div>
 	  	<div class="controls">
-	  		<div class="col-sm-3">
+	  		<div class="col-sm-9">
 	        	<input type="text" name="inputCity" ng-model="newContact.address.city" placeholder="City"/>
 	        </div>
 	    </div>
 	</div>
 	<div class="row control-group">
-	  <div class="col-sm-3" style="text-align:right"><label class="control-label" for="inputState">State:</label></div>
+	  <div class="col-sm-3 form-group" style="text-align:right"><label class="control-label" for="inputState">State:</label></div>
 	  	  	<div class="controls">
-	  		<div class="col-sm-3">
+	  		<div class="col-sm-9">
 	  		<select ng-model="newContact.address.state" >
 				<option value="AL">Alabama</option>
 				<option value="AK">Alaska</option>
@@ -128,10 +127,10 @@
 	    </div>
 	</div>
 	<div class="row control-group">
-	  <div class="col-sm-3" style="text-align:right"><label class="control-label" for="inputZip" >Zip Code:</label></div>
+	  <div class="col-sm-3 form-group" style="text-align:right"><label class="control-label" for="inputZip" >Zip Code:</label></div>
 	  	  	<div class="controls">
-	  		<div class="col-sm-3">
-	        	<input type="email" name="inputZip" ng-model="newContact.address.zipcode" placeholder="ZipCode"/>
+	  		<div class="col-sm-9">
+	        	<input type="text" name="inputZip" ng-model="newContact.address.zipcode" placeholder="99999"/>
 	        </div>
 	    </div>
 	</div>
@@ -145,5 +144,4 @@
       </div>
     </div>
   </form>
-  </div>
 </div>
