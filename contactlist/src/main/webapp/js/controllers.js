@@ -2,23 +2,43 @@
 
 var contactControllers = angular.module('contactControllers', []);
 
-contactControllers.controller('ContactListController', [ '$scope', 'ContactFactory', '$location',
-	function($scope, ContactFactory, $location) {
-
-		/* for ng-click 'createNewContact': */
-		$scope.createNewContact = function() {
-			$location.path('/add-contact');
-		};
-
-		$scope.contacts = ContactFactory.query();
-	} ]);
-
-contactControllers.controller('AddContactController', ['$scope','$rootScope','ContactFactory','$location',
+contactControllers.controller('ContactListController', [ '$scope', '$rootScope', 'ContactFactory', '$location',
 	function($scope, $rootScope, ContactFactory, $location) {
+		$scope.status;
+		$scope.contacts;
+		$scope.contact;
+	
+		getContacts();
+	
+		function getContacts() {
+			ContactFactory.getContacts()
+		        .then(function (response) {
+		            $scope.contacts = response.data;
+		        }, function (error) {
+		            $scope.status = 'Unable to load contact data: ' + error.message;
+		        });
+		}
+		
+		$scope.getContactDetails = function(contactId) {
+			ContactFactory.getContactDetails(contactId)
+	        .then(function (response) {
+	        	$rootScope.contact = response.data;
+	            $location.path('contact-details');
+	        }, function (error) {
+	            $scope.status = 'Unable to load contact details data: ' + error.message;
+	        });
+		}
+	}]);
 
-		/* for ng-click 'createNewContact': */
-		$scope.createNewContact = function() {
-			ContactFactory.create($scope.contact).$promise.then(function(message) {
+contactControllers.controller('AddContactController', ['$scope','$rootScope','ContactFactory','$location',                                                      
+	function($scope, $rootScope, ContactFactory, $location) {
+		$scope.status;
+		$scope.newContact;
+		
+		$scope.createNewContact = function(contact) {
+			ContactFactory.addContact(contact)
+			.then(function(response) {
+				var message = response.data;
 				console.log("Response code: " + message.code + " with message: " + message.message);
 				if (message.code == 0) {
 					$location.path('/contacts');
@@ -33,3 +53,6 @@ contactControllers.controller('AddContactController', ['$scope','$rootScope','Co
 			});
 		}
 	} ]);
+
+
+

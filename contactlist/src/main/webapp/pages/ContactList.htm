@@ -19,12 +19,11 @@
 					      <tr>
 					        <th class="list-group-item-heading">Contact Name</th>
 					        <th class="list-group-item-heading">Email</th>
-					        <th class="list-group-item-heading">Phone</th>
 					      </tr>
 					    </thead> 
 					    <tbody>
 					      <tr ng-repeat="contact in contacts | filter:query"  style="margin-top:16px">
-					        <td class="list-group-item-heading">{{contact.firstName}} {{contact.lastName}}</td>
+					        <td class="list-group-item-heading"><a ng-click="getContactDetails(contact.contactId)">{{contact.firstName}} {{contact.lastName}}</a></td>
 					        <td class="list-group-item-text"><i class="glyphicon glyphicon-envelope"></i> {{contact.email}}</td>
 					        <td class="list-group-item-text"><i class="glyphicon glyphicon-phone-alt"></i> {{contact.phone | phonenumber}}</td>
 					      </tr>

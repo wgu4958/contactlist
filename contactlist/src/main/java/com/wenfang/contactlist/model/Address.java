@@ -7,8 +7,10 @@ public class Address {
 	private String state;
 	private String zipcode;
 	
+	public Address() {
+	}
+	
 	public Address(int addressId, String street, String city, String state, String zipcode) {
-		super();
 		this.addressId = addressId;
 		this.street = street;
 		this.city = city;
