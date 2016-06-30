@@ -2,13 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd
- 	http://cxf.apache.org/jaxrs
- 	http://cxf.apache.org/schemas/jaxrs.xsd
- 	http://www.springframework.org/schema/context
- 	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ 							http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+							http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
     <import resource="classpath:META-INF/cxf/cxf.xml" />
     <context:component-scan base-package="com.wenfang.*" />
@@ -25,6 +24,42 @@
         </jaxrs:extensionMappings>
     </jaxrs:server>
 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/contactlist" />
+		<property name="username" value="wenfang" />
+		<property name="password" value="password" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- Hibernate Annotation SessionFactory Bean definition-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.wenfang.contactlist.model.Contact</value>
+				<value>com.wenfang.contactlist.model.Address</value>
+			</list>
+		</property>
+ 		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property> 
+	</bean>
+	
+	<bean id="persistenceExceptionTranslationPostProcessor"
+        class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+        
+	
     <bean id="contactServiceImpl" class="com.wenfang.contactlist.services.ContactRestServicesImpl"/>
-    <bean id="contactDao" class="com.wenfang.contactlist.dao.ContactDao"/>
+    <bean id="contactDao" class="com.wenfang.contactlist.dao.ContactDao">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
 </beans>

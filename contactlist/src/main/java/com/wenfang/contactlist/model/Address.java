@@ -1,21 +1,52 @@
 package com.wenfang.contactlist.model;
 
-public class Address {
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "ADDRESS")
+public class Address implements Serializable {
+
+	private static final long serialVersionUID = -7981463111450994367L;
+
+	@Id
+	@Column(name="ADDRESSID")
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
 	private int addressId;
+	
+	@Column(name="STREET")
 	private String street;
+	
+	@Column(name="CITY")
 	private String city;
+	
+	@Column(name="STATE")
 	private String state;
+	
+	@Column(name="ZIPCODE")
 	private String zipcode;
 	
-	public Address() {
-	}
+	@Version
+	@Column(name="LAST_UPDATED")
+	@Generated(GenerationTime.ALWAYS)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedAt;
 	
-	public Address(int addressId, String street, String city, String state, String zipcode) {
-		this.addressId = addressId;
-		this.street = street;
-		this.city = city;
-		this.state = state;
-		this.zipcode = zipcode;
+	public Address() {
 	}
 
 	public int getAddressId() {
@@ -56,5 +87,13 @@ public class Address {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }

@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.wenfang.contactlist.model.ContactDetails;
+import com.wenfang.contactlist.model.Contact;
 
 @Path("/")
 @WebService(name="contactServices")
@@ -30,5 +30,5 @@ public interface ContactRestServices {
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Path("/contacts")
-	public Response addContact(ContactDetails contact);
+	public Response addContact(Contact contact);
 }

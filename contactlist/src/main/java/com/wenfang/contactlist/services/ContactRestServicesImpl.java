@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wenfang.contactlist.dao.ContactDao;
 import com.wenfang.contactlist.model.Contact;
-import com.wenfang.contactlist.model.ContactDetails;
 import com.wenfang.contactlist.model.ContactMessage;
 
 public class ContactRestServicesImpl implements ContactRestServices {
@@ -24,14 +23,14 @@ public class ContactRestServicesImpl implements ContactRestServices {
 	}
 
 	@Override
-	public Response addContact(ContactDetails contact) {
+	public Response addContact(Contact contact) {
 		ContactMessage message = contactDao.addContact(contact);
 		return Response.ok(message).header("Content-Type", "application/json").build();
 	}
 
 	@Override
 	public Response getContactDetails(int contactId) {
-		ContactDetails contactDetails = contactDao.getContactDetails(contactId);	
+		Contact contactDetails = contactDao.getContactDetails(contactId);	
 		return Response.ok(contactDetails).header("Content-Type", "application/json").build();
 	}
 }
