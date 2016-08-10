@@ -21,7 +21,7 @@
 		   </thead> 
 		   <tbody>
 		     <tr ng-repeat="contact in contacts | filter:query"  style="margin-top:16px">
-		        <td class="list-group-item-heading"><a ng-click="getContactDetails(contact.contactId)">{{contact.firstName}} {{contact.lastName}}</a></td>
+		        <td class="list-group-item-heading"><a href="#contact-details/{{contact.contactId}}">{{contact.firstName}} {{contact.lastName}}</a></td>
 		        <td class="list-group-item-text"><i class="glyphicon glyphicon-envelope"></i> {{contact.email}}</td>
 		        <td class="list-group-item-text"><i class="glyphicon glyphicon-phone-alt"></i> {{contact.phone | phonenumber}}</td>
 		      </tr>

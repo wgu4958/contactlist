@@ -2,38 +2,33 @@
 
 var contactControllers = angular.module('contactControllers', []);
 
-contactControllers.controller('ContactListController', [ '$scope', '$rootScope', 'ContactFactory', '$location',
-	function($scope, $rootScope, ContactFactory, $location) {	
-		
-		getContacts();
-		
-		function getContacts() {
-			ContactFactory.getContacts()
-		        .then(function (response) {
-		            $scope.contacts = response.data;
-		        }, function (error) {
-		            $scope.status = 'Unable to load contact data: ' + error.message;
-		        });
-		}
-		
-		$scope.getContactDetails = function(contactId) {
-			$rootScope.info = null;
-			
-			ContactFactory.getContactDetails(contactId)
+contactControllers.controller('ContactListController', [ '$scope', '$rootScope', 'ContactService', '$location',
+	function($scope, $rootScope, ContactService, $location) {	
+		ContactService.getContacts()
 	        .then(function (response) {
-	        	$rootScope.contact = response.data;
-	            $location.path('contact-details');
+	            $scope.contacts = response.data;
+	        }, function (error) {
+	            $scope.status = 'Unable to load contact data: ' + error.message;
+	        });
+	}]);
+
+contactControllers.controller('ContactDetailsController', [ '$scope', '$rootScope', 'ContactService', '$routeParams',
+    function($scope, $rootScope, ContactService, $routeParams) {
+		$rootScope.info = null;
+		
+		ContactService.getContactDetails($routeParams.contactId)
+	        .then(function (response) {
+	        	$scope.contact = response.data;
 	        }, function (error) {
 	            $scope.status = 'Unable to load contact details data: ' + error.message;
 	        });
-		}
-	}]);
+}]);
 
-contactControllers.controller('AddContactController', ['$scope','$rootScope','ContactFactory','$location',                                                      
-	function($scope, $rootScope, ContactFactory, $location) {
+contactControllers.controller('AddContactController', ['$scope','$rootScope','ContactService','$location',                                                      
+	function($scope, $rootScope, ContactService, $location) {
 		$rootScope.info = null;
 		$scope.createNewContact = function(contact) {
-			ContactFactory.addContact(contact)
+			ContactService.addContact(contact)
 			.then(function(response) {
 				var message = response.data;
 				console.log("Response code: " + message.code + " with message: " + message.message);

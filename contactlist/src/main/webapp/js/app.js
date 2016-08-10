@@ -12,8 +12,9 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 	    	templateUrl: 'pages/AddContact.htm', 
 	    	controller: 'AddContactController'
 	    }).
-	    when('/contact-details', {
-	    	templateUrl: 'pages/ContactDetails.htm'
+	    when('/contact-details/:contactId', {
+	    	templateUrl: 'pages/ContactDetails.htm',
+	    	controller: 'ContactDetailsController'
 	    }).
 	    otherwise({
 	    	redirectTo: '/contacts'

@@ -12,9 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -42,7 +41,7 @@ public class Address implements Serializable {
 	
 	@Version
 	@Column(name="LAST_UPDATED")
-	@Generated(GenerationTime.ALWAYS)
+	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 	

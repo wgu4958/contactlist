@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('contactServices',[]).factory('ContactFactory', ['$http', function($http) {
+angular.module('contactServices',[]).factory('ContactService', ['$http', function($http) {
 	
 	var urlBase = '/contactlist/rest/contactservices/contacts';
 	var dataFactory = {};
